@@ -1,0 +1,28 @@
+{
+    "name": "phpactor/definition-jumper",
+    "description": "Jump to and from definitions",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Leec",
+            "email": "daniel@dantleech.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.10.5",
+        "phpunit/phpunit": "^7.4",
+        "friendsofphp/php-cs-fixer": "^2.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpactor\\DefinitionJumper\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phpactor\\DefinitionJumper\\Tests\\": "tests/"
+        }
+    }
+}
