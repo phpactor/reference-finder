@@ -1,6 +1,6 @@
 {
-    "name": "phpactor/definition-jumper",
-    "description": "Jump to and from definitions",
+    "name": "phpactor/reference-finder",
+    "description": "Base library for finding definitions",
     "license": "MIT",
     "authors": [
         {
@@ -9,6 +9,9 @@
         }
     ],
     "require": {
+        "phpactor/text-document-interface": "@dev",
+        "webmozart/path-util": "^2.3",
+        "psr/log": "^1.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.10.5",
@@ -17,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Phpactor\\DefinitionJumper\\": "lib/"
+            "Phpactor\\ReferenceFinder\\": "lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Phpactor\\DefinitionJumper\\Tests\\": "tests/"
+            "Phpactor\\ReferenceFinder\\Tests\\": "tests/"
         }
     }
 }
