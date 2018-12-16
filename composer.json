@@ -2,14 +2,15 @@
     "name": "phpactor/reference-finder",
     "description": "Base library for finding definitions",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
-            "name": "Daniel Leec",
+            "name": "Daniel Leech",
             "email": "daniel@dantleech.com"
         }
     ],
     "require": {
-        "phpactor/text-document-interface": "@dev",
+        "phpactor/text-document": "~1.0",
         "webmozart/path-util": "^2.3",
         "psr/log": "^1.1"
     },
