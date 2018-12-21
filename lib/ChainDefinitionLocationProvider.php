@@ -3,9 +3,9 @@
 namespace Phpactor\ReferenceFinder;
 
 use Phpactor\ReferenceFinder\Exception\CouldNotLocateDefinition;
+use Phpactor\ReferenceFinder\Exception\UnsupportedDocument;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\TextDocument;
-use Phpactor\ReferenceFinder\DefinitionLocator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -36,14 +36,26 @@ final class ChainDefinitionLocationProvider implements DefinitionLocator
 
     public function locateDefinition(TextDocument $document, ByteOffset $byteOffset): DefinitionLocation
     {
+        $messages = [];
         foreach ($this->providers as $provider) {
             try {
                 return $provider->locateDefinition($document, $byteOffset);
+            } catch (UnsupportedDocument $unsupported) {
+                $this->logger->debug(sprintf(
+                    'Document is unsupported by "%s": %s',
+                    get_class($provider),
+                    $unsupported->getMessage()
+                ));
             } catch (CouldNotLocateDefinition $exception) {
                 $this->logger->info(sprintf('Could not locate definition ""%s"', $exception->getMessage()));
+                $messages[] = $exception;
             }
         }
 
-        throw new CouldNotLocateDefinition(sprintf('Could not locate definition with "%s" locators', count($this->providers)));
+        if ($messages) {
+            throw new CouldNotLocateDefinition(implode(', ', $messages));
+        }
+
+        throw new CouldNotLocateDefinition('Unable to locate definition');
     }
 }

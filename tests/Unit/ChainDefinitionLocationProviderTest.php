@@ -5,9 +5,9 @@ namespace Phpactor\ReferenceFinder\Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Phpactor\ReferenceFinder\ChainDefinitionLocationProvider;
 use Phpactor\ReferenceFinder\DefinitionLocation;
-use Phpactor\ReferenceFinder\Core\DefinitionLocationList;
 use Phpactor\ReferenceFinder\DefinitionLocator;
 use Phpactor\ReferenceFinder\Exception\CouldNotLocateDefinition;
+use Phpactor\ReferenceFinder\Exception\UnsupportedDocument;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\TextDocumentBuilder;
 use Phpactor\TextDocument\TextDocumentUri;
@@ -64,14 +64,29 @@ class ChainDefinitionLocationProviderTest extends TestCase
     public function testExceptionWhenDefinitionNotFound()
     {
         $this->expectException(CouldNotLocateDefinition::class);
+        $this->expectExceptionMessage('No');
 
         $locator = new ChainDefinitionLocationProvider([
             $this->locator1->reveal()
         ]);
 
         $this->locator1->locateDefinition($this->document, $this->offset)->willThrow(new CouldNotLocateDefinition('No'));
-$locator->locateDefinition($this->document, $this->offset);
+        $locator->locateDefinition($this->document, $this->offset);
     }
+
+    public function testExceptionWhenDefinitionNotSupported()
+    {
+        $this->expectException(CouldNotLocateDefinition::class);
+        $this->expectExceptionMessage('Unable to locate definition');
+
+        $locator = new ChainDefinitionLocationProvider([
+            $this->locator1->reveal()
+        ]);
+
+        $this->locator1->locateDefinition($this->document, $this->offset)->willThrow(new UnsupportedDocument('Not supported'));
+        $locator->locateDefinition($this->document, $this->offset);
+    }
+
 
     private function createLocation()
     {
