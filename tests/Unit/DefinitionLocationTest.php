@@ -20,7 +20,7 @@ class DefinitionLocationTest extends TestCase
             ByteOffset::fromInt(self::EXAMPLE_OFFSET)
         );
 
-        $this->assertEquals(self::EXAMPLE_URI, $location->uri());
+        $this->assertEquals(self::EXAMPLE_URI, $location->uri()->path());
         $this->assertEquals(self::EXAMPLE_OFFSET, $location->offset()->toInt());
     }
 }
