@@ -3,33 +3,31 @@
 namespace Phpactor\ReferenceFinder;
 
 use Phpactor\TextDocument\ByteOffset;
+use Phpactor\TextDocument\Location;
 use Phpactor\TextDocument\TextDocumentUri;
 
+/**
+ * @deprecated Is replaced by the Phpactor\\TextDocument\\Location value object
+ */
 final class DefinitionLocation
 {
     /**
-     * @var TextDocumentUri
+     * @var Location
      */
-    private $uri;
-
-    /**
-     * @var ByteOffset
-     */
-    private $byteOffset;
+    private $location;
 
     public function __construct(TextDocumentUri $uri, ByteOffset $byteOffset)
     {
-        $this->uri = $uri;
-        $this->byteOffset = $byteOffset;
+        $this->location = new Location($uri, $byteOffset);
     }
 
     public function uri(): TextDocumentUri
     {
-        return $this->uri;
+        return $this->location->uri();
     }
 
     public function offset(): ByteOffset
     {
-        return $this->byteOffset;
+        return $this->location->offset();
     }
 }
