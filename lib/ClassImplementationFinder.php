@@ -7,5 +7,5 @@ use Phpactor\TextDocument\Locations;
 
 interface ClassImplementationFinder
 {
-    public function findImplementations(FullyQualifiedName $name): Locations;
+    public function findImplementations(TextDocument $document, ByteOffset $byteOffset): Locations;
 }
