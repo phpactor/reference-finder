@@ -3,7 +3,9 @@
 namespace Phpactor\ReferenceFinder;
 
 use Phpactor\Name\FullyQualifiedName;
+use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\Locations;
+use Phpactor\TextDocument\TextDocument;
 
 interface ClassImplementationFinder
 {
