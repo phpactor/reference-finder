@@ -47,6 +47,7 @@ final class ChainTypeLocator implements TypeLocator
                     get_class($locator),
                     $unsupported->getMessage()
                 ));
+                $messages[] = $unsupported->getMessage();
             } catch (CouldNotLocateType $exception) {
                 $this->logger->info(sprintf('Could not locate type ""%s"', $exception->getMessage()));
                 $messages[] = $exception->getMessage();

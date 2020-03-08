@@ -78,7 +78,7 @@ class ChainTypeLocatorTest extends TestCase
     public function testExceptionWhenTypeNotSupported()
     {
         $this->expectException(CouldNotLocateType::class);
-        $this->expectExceptionMessage('Unable to locate definition');
+        $this->expectExceptionMessage('Not supported');
 
         $locator = new ChainTypeLocator([
             $this->locator1->reveal()

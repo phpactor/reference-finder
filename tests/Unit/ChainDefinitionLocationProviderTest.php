@@ -77,7 +77,7 @@ class ChainDefinitionLocationProviderTest extends TestCase
     public function testExceptionWhenDefinitionNotSupported()
     {
         $this->expectException(CouldNotLocateDefinition::class);
-        $this->expectExceptionMessage('Unable to locate definition');
+        $this->expectExceptionMessage('Not supported');
 
         $locator = new ChainDefinitionLocationProvider([
             $this->locator1->reveal()

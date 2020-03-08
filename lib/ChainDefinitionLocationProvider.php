@@ -46,6 +46,7 @@ final class ChainDefinitionLocationProvider implements DefinitionLocator
                     get_class($provider),
                     $unsupported->getMessage()
                 ));
+                $messages[] = $unsupported->getMessage();
             } catch (CouldNotLocateDefinition $exception) {
                 $this->logger->info(sprintf('Could not locate definition ""%s"', $exception->getMessage()));
                 $messages[] = $exception->getMessage();
