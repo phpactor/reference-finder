@@ -56,6 +56,6 @@ final class ChainDefinitionLocationProvider implements DefinitionLocator
             throw new CouldNotLocateDefinition(implode(', ', $messages));
         }
 
-        throw new CouldNotLocateDefinition('Unable to locate definition');
+        throw new CouldNotLocateDefinition('No definition locators are registered');
     }
 }

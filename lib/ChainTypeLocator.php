@@ -48,7 +48,7 @@ final class ChainTypeLocator implements TypeLocator
                     $unsupported->getMessage()
                 ));
             } catch (CouldNotLocateType $exception) {
-                $this->logger->info(sprintf('Could not locate definition ""%s"', $exception->getMessage()));
+                $this->logger->info(sprintf('Could not locate type ""%s"', $exception->getMessage()));
                 $messages[] = $exception->getMessage();
             }
         }
@@ -57,6 +57,6 @@ final class ChainTypeLocator implements TypeLocator
             throw new CouldNotLocateType(implode(', ', $messages));
         }
 
-        throw new CouldNotLocateType('Unable to locate definition');
+        throw new CouldNotLocateType('No type locators are registered');
     }
 }
