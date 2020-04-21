@@ -5,8 +5,6 @@ namespace Phpactor\ReferenceFinder;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\Locations;
 use Phpactor\TextDocument\TextDocument;
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 final class ChainImplementationFinder implements ClassImplementationFinder
 {
@@ -15,14 +13,8 @@ final class ChainImplementationFinder implements ClassImplementationFinder
      */
     private $finders = [];
 
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    public function __construct(array $finders, LoggerInterface $logger = null)
+    public function __construct(array $finders)
     {
-        $this->logger = $logger ?: new NullLogger();
         foreach ($finders as $finder) {
             $this->add($finder);
         }
