@@ -9,7 +9,6 @@ use Phpactor\ReferenceFinder\ClassReferenceFinder;
 use Phpactor\ReferenceFinder\ReferenceFinder;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\Location;
-use Phpactor\TextDocument\Locations;
 use Phpactor\TextDocument\TextDocument;
 use Phpactor\TextDocument\TextDocumentBuilder;
 use Phpactor\TextDocument\TextDocumentUri;
@@ -54,13 +53,17 @@ class ChainReferenceFinderTest extends TestCase
         ]);
 
         $location1 = $this->createLocation();
-        $this->locator1->findReferences($this->document, $this->offset)->willReturn(new Locations([$location1]));
+        $this->locator1->findReferences($this->document, $this->offset)->willYield([$location1]);
 
         $location2 = $this->createLocation();
-        $this->locator2->findReferences($this->document, $this->offset)->willReturn(new Locations([$location2]));
+        $this->locator2->findReferences($this->document, $this->offset)->willYield([$location2]);
 
-        $locations = $locator->findReferences($this->document, $this->offset);
-        $this->assertEquals(new Locations([$location1, $location2], $locations), $locations);
+        $locations = [];
+        foreach ($locator->findReferences($this->document, $this->offset) as $location) {
+            $locations[] = $location;
+        }
+
+        $this->assertEquals([$location1, $location2], $locations);
     }
 
     private function createLocation(): Location

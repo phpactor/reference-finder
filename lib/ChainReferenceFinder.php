@@ -2,8 +2,8 @@
 
 namespace Phpactor\ReferenceFinder;
 
+use Generator;
 use Phpactor\TextDocument\ByteOffset;
-use Phpactor\TextDocument\Locations;
 use Phpactor\TextDocument\TextDocument;
 
 final class ChainReferenceFinder implements ReferenceFinder
@@ -25,14 +25,10 @@ final class ChainReferenceFinder implements ReferenceFinder
         $this->finders[] = $finder;
     }
 
-    public function findReferences(TextDocument $document, ByteOffset $byteOffset): Locations
+    public function findReferences(TextDocument $document, ByteOffset $byteOffset): Generator
     {
-        $messages = [];
-        $locations = [];
         foreach ($this->finders as $finder) {
-            $locations = array_merge($locations, iterator_to_array($finder->findReferences($document, $byteOffset)));
+            yield from $finder->findReferences($document, $byteOffset);
         }
-
-        return new Locations($locations);
     }
 }
