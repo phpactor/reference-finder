@@ -3,7 +3,6 @@
 namespace Phpactor\ReferenceFinder;
 
 use Generator;
-use Phpactor\TextDocument\Location;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\TextDocument;
 
