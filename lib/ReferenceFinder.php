@@ -12,7 +12,7 @@ interface ReferenceFinder
     /**
      * Find references to the symbol at the given byte offset.
      *
-     * @return Generator<Location>
+     * @return Generator<PotentialLocation>
      */
     public function findReferences(TextDocument $document, ByteOffset $byteOffset): Generator;
 }
