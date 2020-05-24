@@ -3,15 +3,11 @@
 namespace Phpactor\ReferenceFinder\Search;
 
 use Phpactor\Name\FullyQualifiedName;
-use RuntimeException;
 
-class NameSearchResult
+final class NameSearchResult
 {
-    const TYPE_CLASS = 'class';
-    const TYPE_FUNCTION = 'function';
-
     /**
-     * @var string
+     * @var NameSearchResultType
      */
     private $type;
 
@@ -20,25 +16,22 @@ class NameSearchResult
      */
     private $name;
 
-    private function __construct(string $type, FullyQualifiedName $name)
+    private function __construct(NameSearchResultType $type, FullyQualifiedName $name)
     {
-        $validTypes = [self::TYPE_FUNCTION, self::TYPE_CLASS];
-        if (!in_array($type, $validTypes)) {
-            throw new RuntimeException(sprintf(
-                'Name search result type "%s" is invalid, must be one of "%s"',
-                $type,implode('", "', $validTypes)
-            ));
-        }
         $this->type = $type;
         $this->name = $name;
     }
 
     /**
      * @param string|FullyQualifiedName $name
+     * @param string|NameSearchResultType $name
      */
-    public static function create(string $type, $name): self
+    public static function create($type, $name): self
     {
-        return new self($type, is_string($name) ? FullyQualifiedName::fromString($name) : $name);
+        return new self(
+            is_string($type) ? new NameSearchResultType($type) : $type,
+            is_string($name) ? FullyQualifiedName::fromString($name) : $name
+        );
     }
 
     public function name(): FullyQualifiedName
@@ -46,7 +39,7 @@ class NameSearchResult
         return $this->name;
     }
 
-    public function type(): string
+    public function type(): NameSearchResultType
     {
         return $this->type;
     }
