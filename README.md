@@ -1,7 +1,7 @@
 Reference Finder
 ================
 
-[![Build Status](https://travis-ci.org/phpactor/definition-jumper.svg?branch=master)](https://travis-ci.org/phpactor/definition-jumper)
+![CI](https://github.com/phpactor/reference-finder/workflows/CI/badge.svg)
 
 Base package for finding references to a symbol at a given offset in a given
 text file.
