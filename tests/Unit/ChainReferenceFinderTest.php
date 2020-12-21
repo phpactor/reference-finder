@@ -36,7 +36,7 @@ class ChainReferenceFinderTest extends TestCase
      */
     private $offset;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->locator1 = $this->prophesize(ReferenceFinder::class);
         $this->locator2 = $this->prophesize(ReferenceFinder::class);
