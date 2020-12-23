@@ -2,7 +2,6 @@
     "name": "phpactor/reference-finder",
     "description": "Base library for finding definitions",
     "license": "MIT",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Daniel Leech",
@@ -11,15 +10,21 @@
     ],
     "require": {
         "php": "^7.2",
+        "phpactor/name-specification": "^0.1.0@dev",
         "phpactor/text-document": "~1.0",
-        "webmozart/path-util": "^2.3",
         "psr/log": "^1.1",
-        "phpactor/name-specification": "^0.1.0@dev"
+        "webmozart/path-util": "^2.3"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.17",
         "phpstan/phpstan": "~0.12.0",
-        "phpunit/phpunit": "^7.0",
-        "friendsofphp/php-cs-fixer": "^2.15.0"
+        "phpunit/phpunit": "^7.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -31,16 +36,13 @@
             "Phpactor\\ReferenceFinder\\Tests\\": "tests/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "integrate": [
             "./vendor/bin/php-cs-fixer fix",
             "./vendor/bin/phpstan analyse lib -c phpstan.neon",
             "./vendor/bin/phpunit"
         ]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
     }
 }
