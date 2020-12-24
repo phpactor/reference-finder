@@ -36,7 +36,7 @@ class ChainImplementationFinderTest extends TestCase
      */
     private $offset;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->locator1 = $this->prophesize(ClassImplementationFinder::class);
         $this->locator2 = $this->prophesize(ClassImplementationFinder::class);
