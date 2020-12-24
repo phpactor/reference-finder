@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "phpactor/name-specification": "^0.1.0@dev",
         "phpactor/text-document": "~1.0",
         "psr/log": "^1.1",
