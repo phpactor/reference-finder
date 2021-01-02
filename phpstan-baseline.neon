@@ -40,13 +40,3 @@ parameters:
 			count: 1
 			path: lib/ChainTypeLocator.php
 
-		-
-			message: "#^Method Phpactor\\\\ReferenceFinder\\\\Search\\\\NameSearchResult\\:\\:create\\(\\) has parameter \\$type with no typehint specified\\.$#"
-			count: 1
-			path: lib/Search/NameSearchResult.php
-
-		-
-			message: "#^Parameter \\#2 \\$name of class Phpactor\\\\ReferenceFinder\\\\Search\\\\NameSearchResult constructor expects Phpactor\\\\Name\\\\FullyQualifiedName, Phpactor\\\\Name\\\\FullyQualifiedName\\|Phpactor\\\\ReferenceFinder\\\\Search\\\\NameSearchResultType given\\.$#"
-			count: 1
-			path: lib/Search/NameSearchResult.php
-
