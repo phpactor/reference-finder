@@ -11,10 +11,13 @@ use Phpactor\ReferenceFinder\Exception\UnsupportedDocument;
 use Phpactor\TextDocument\ByteOffset;
 use Phpactor\TextDocument\TextDocumentBuilder;
 use Phpactor\TextDocument\TextDocumentUri;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 class ChainDefinitionLocationProviderTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy|DefinitionLocator
      */

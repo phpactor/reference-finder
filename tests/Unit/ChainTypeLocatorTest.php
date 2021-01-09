@@ -12,10 +12,13 @@ use Phpactor\TextDocument\Location;
 use Phpactor\TextDocument\TextDocument;
 use Phpactor\TextDocument\TextDocumentBuilder;
 use Phpactor\TextDocument\TextDocumentUri;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 class ChainTypeLocatorTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy|TypeLocator
      */
