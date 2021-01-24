@@ -48,7 +48,7 @@ class ChainImplementationFinderTest extends TestCase
         $this->offset = ByteOffset::fromInt(1234);
     }
 
-    public function testProvidesAggregateLocations()
+    public function testProvidesAggregateLocations(): void
     {
         $locator = new ChainImplementationFinder([
             $this->locator1->reveal(),

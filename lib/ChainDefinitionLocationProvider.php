@@ -29,11 +29,6 @@ final class ChainDefinitionLocationProvider implements DefinitionLocator
         }
     }
 
-    private function add(DefinitionLocator $provider)
-    {
-        $this->providers[] = $provider;
-    }
-
     public function locateDefinition(TextDocument $document, ByteOffset $byteOffset): DefinitionLocation
     {
         $messages = [];
@@ -58,5 +53,10 @@ final class ChainDefinitionLocationProvider implements DefinitionLocator
         }
 
         throw new CouldNotLocateDefinition('No definition locators are registered');
+    }
+
+    private function add(DefinitionLocator $provider): void
+    {
+        $this->providers[] = $provider;
     }
 }

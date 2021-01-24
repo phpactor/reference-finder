@@ -20,11 +20,6 @@ final class ChainImplementationFinder implements ClassImplementationFinder
         }
     }
 
-    private function add(ClassImplementationFinder $finder)
-    {
-        $this->finders[] = $finder;
-    }
-
     public function findImplementations(TextDocument $document, ByteOffset $byteOffset): Locations
     {
         $messages = [];
@@ -34,5 +29,10 @@ final class ChainImplementationFinder implements ClassImplementationFinder
         }
 
         return new Locations($locations);
+    }
+
+    private function add(ClassImplementationFinder $finder): void
+    {
+        $this->finders[] = $finder;
     }
 }

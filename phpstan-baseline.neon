@@ -6,17 +6,7 @@ parameters:
 			path: lib/ChainDefinitionLocationProvider.php
 
 		-
-			message: "#^Method Phpactor\\\\ReferenceFinder\\\\ChainDefinitionLocationProvider\\:\\:add\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/ChainDefinitionLocationProvider.php
-
-		-
 			message: "#^Method Phpactor\\\\ReferenceFinder\\\\ChainImplementationFinder\\:\\:__construct\\(\\) has parameter \\$finders with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: lib/ChainImplementationFinder.php
-
-		-
-			message: "#^Method Phpactor\\\\ReferenceFinder\\\\ChainImplementationFinder\\:\\:add\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/ChainImplementationFinder.php
 
@@ -26,17 +16,7 @@ parameters:
 			path: lib/ChainReferenceFinder.php
 
 		-
-			message: "#^Method Phpactor\\\\ReferenceFinder\\\\ChainReferenceFinder\\:\\:add\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/ChainReferenceFinder.php
-
-		-
 			message: "#^Method Phpactor\\\\ReferenceFinder\\\\ChainTypeLocator\\:\\:__construct\\(\\) has parameter \\$locators with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: lib/ChainTypeLocator.php
-
-		-
-			message: "#^Method Phpactor\\\\ReferenceFinder\\\\ChainTypeLocator\\:\\:add\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/ChainTypeLocator.php
 
