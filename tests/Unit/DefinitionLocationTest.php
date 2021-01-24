@@ -13,7 +13,7 @@ class DefinitionLocationTest extends TestCase
     const EXAMPLE_OFFSET = 1234;
 
 
-    public function testValues()
+    public function testValues(): void
     {
         $location = new DefinitionLocation(
             TextDocumentUri::fromString(self::EXAMPLE_URI),

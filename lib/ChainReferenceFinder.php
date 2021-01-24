@@ -20,15 +20,15 @@ final class ChainReferenceFinder implements ReferenceFinder
         }
     }
 
-    private function add(ReferenceFinder $finder)
-    {
-        $this->finders[] = $finder;
-    }
-
     public function findReferences(TextDocument $document, ByteOffset $byteOffset): Generator
     {
         foreach ($this->finders as $finder) {
             yield from $finder->findReferences($document, $byteOffset);
         }
+    }
+
+    private function add(ReferenceFinder $finder): void
+    {
+        $this->finders[] = $finder;
     }
 }

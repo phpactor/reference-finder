@@ -47,7 +47,7 @@ class ChainDefinitionLocationProviderTest extends TestCase
         $this->offset = ByteOffset::fromInt(1234);
     }
 
-    public function testProvidesAggregatedLocations()
+    public function testProvidesAggregatedLocations(): void
     {
         $locator = new ChainDefinitionLocationProvider([
             $this->locator1->reveal(),
@@ -64,7 +64,7 @@ class ChainDefinitionLocationProviderTest extends TestCase
         $this->assertSame($location, $location1);
     }
 
-    public function testExceptionWhenDefinitionNotFound()
+    public function testExceptionWhenDefinitionNotFound(): void
     {
         $this->expectException(CouldNotLocateDefinition::class);
         $this->expectExceptionMessage('No');
@@ -77,7 +77,7 @@ class ChainDefinitionLocationProviderTest extends TestCase
         $locator->locateDefinition($this->document, $this->offset);
     }
 
-    public function testExceptionWhenDefinitionNotSupported()
+    public function testExceptionWhenDefinitionNotSupported(): void
     {
         $this->expectException(CouldNotLocateDefinition::class);
         $this->expectExceptionMessage('Not supported');

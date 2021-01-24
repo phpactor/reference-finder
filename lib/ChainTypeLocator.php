@@ -30,11 +30,6 @@ final class ChainTypeLocator implements TypeLocator
         }
     }
 
-    private function add(TypeLocator $locator)
-    {
-        $this->locators[] = $locator;
-    }
-
     public function locateType(TextDocument $document, ByteOffset $byteOffset): Location
     {
         $messages = [];
@@ -59,5 +54,10 @@ final class ChainTypeLocator implements TypeLocator
         }
 
         throw new CouldNotLocateType('No type locators are registered');
+    }
+
+    private function add(TypeLocator $locator): void
+    {
+        $this->locators[] = $locator;
     }
 }

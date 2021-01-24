@@ -48,7 +48,7 @@ class ChainTypeLocatorTest extends TestCase
         $this->offset = ByteOffset::fromInt(1234);
     }
 
-    public function testProvidesAggregatedLocations()
+    public function testProvidesAggregatedLocations(): void
     {
         $locator = new ChainTypeLocator([
             $this->locator1->reveal(),
@@ -65,7 +65,7 @@ class ChainTypeLocatorTest extends TestCase
         $this->assertSame($location, $location1);
     }
 
-    public function testExceptionWhenTypeNotFound()
+    public function testExceptionWhenTypeNotFound(): void
     {
         $this->expectException(CouldNotLocateType::class);
         $this->expectExceptionMessage('No');
@@ -78,7 +78,7 @@ class ChainTypeLocatorTest extends TestCase
         $locator->locateType($this->document, $this->offset);
     }
 
-    public function testExceptionWhenTypeNotSupported()
+    public function testExceptionWhenTypeNotSupported(): void
     {
         $this->expectException(CouldNotLocateType::class);
         $this->expectExceptionMessage('Not supported');
