@@ -9,9 +9,9 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3 || ^8.0",
         "phpactor/name-specification": "^0.1.0@dev",
-        "phpactor/text-document": "~1.0",
+        "phpactor/text-document": "~1.2.3",
         "psr/log": "^1.1",
         "webmozart/path-util": "^2.3"
     },
