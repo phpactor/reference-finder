@@ -13,7 +13,7 @@ class TestReferenceFinder implements ReferenceFinder
      */
     private $locations;
 
-    private function __construct(PotentialLocation ...$locations)
+    public function __construct(PotentialLocation ...$locations)
     {
         $this->locations = $locations;
     }
